@@ -1,0 +1,31 @@
+﻿@page
+@model AlertinatorWeb.Pages.KeywordSubscriptions.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Keyword Subscription Details</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt style="width:200px;text-align:left">
+            @Html.DisplayNameFor(model => model.KeywordSubscription.Keyword)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.KeywordSubscription.Keyword)
+        </dd>
+        <dt style="width:200px;text-align:left">
+            @Html.DisplayNameFor(model => model.KeywordSubscription.SendEMail)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.KeywordSubscription.SendEMail)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.KeywordSubscription.ID">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

@@ -1,0 +1,40 @@
+﻿@page
+@model AlertinatorWeb.Pages.KeywordSubscriptions.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>KeywordSubscription</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.KeywordSubscription.Keyword)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.KeywordSubscription.Keyword)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.KeywordSubscription.UserID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.KeywordSubscription.UserID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.KeywordSubscription.SendEMail)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.KeywordSubscription.SendEMail)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="KeywordSubscription.ID" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-page="./Index">Back to List</a>
+    </form>
+</div>

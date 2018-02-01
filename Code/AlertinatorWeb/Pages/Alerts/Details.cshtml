@@ -1,0 +1,49 @@
+﻿@page
+@model AlertinatorWeb.Pages.Alerts.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Alert</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Alert.Keyword)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Alert.Keyword)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Alert.Url)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Alert.Url)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Alert.Title)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Alert.Title)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Alert.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Alert.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Alert.DatePublished)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Alert.DatePublished)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Alert.ID">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

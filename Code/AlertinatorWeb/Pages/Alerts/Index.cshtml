@@ -1,0 +1,47 @@
+﻿@page
+@model AlertinatorWeb.Pages.Alerts.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Alert[0].Keyword)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Alert[0].Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Alert[0].Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Alert[0].DatePublished)
+                </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Alert) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Keyword)
+            </td>
+            <td>
+                <a href="@Html.DisplayFor(modelItem => item.Url)">@Html.DisplayFor(modelItem => item.Title)</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DatePublished)
+            </td>
+            
+        </tr>
+}
+    </tbody>
+</table>
