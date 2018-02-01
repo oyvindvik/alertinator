@@ -12,7 +12,7 @@ namespace AlertinatorWeb.Pages
 
         public void OnGet()
         {
-            Message = "Your application description page.";
+            Message = "About Alertinator";
         }
     }
 }
