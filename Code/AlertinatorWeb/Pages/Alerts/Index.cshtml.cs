@@ -18,19 +18,27 @@ namespace AlertinatorWeb.Pages.Alerts
             _context = context;
         }
 
-        public IList<Alert> Alert { get;set; }
+        public PaginatedList<Alert> Alert { get;set; }
 
-        public async Task OnGetAsync()
+        public async Task OnGetAsync(int? pageIndex)
         {
+            int pageSize = 25;
             string currentUserId = HttpContext.User.Identity.Name;
-            var alertList = (from a in _context.Alerts
-                             join k in _context.KeywordSubscription on a.Keyword equals k.Keyword
-                             where k.UserID.Equals(currentUserId)
-                             select a).OrderByDescending(al => al.DatePublished).ToListAsync();
-            Alert = await alertList;
-            //Alert = await _context.Alerts.OrderByDescending(s => s.DatePublished).ToListAsync(); // TODO: Must join against your own selected keywords so that it only returns the ones you have yourself.
+            IQueryable<Alert> alertList = from a in _context.Alerts
+                                           join k in _context.KeywordSubscription on a.Keyword equals k.Keyword
+                                           where k.UserID.Equals(currentUserId)
+                                           select a;
+            int pageNumber = pageIndex ?? 1;
+            Alert = await PaginatedList<Alert>.CreateAsync(alertList.AsNoTracking().OrderByDescending(s => s.DatePublished), pageNumber, pageSize);
+
+            /*
+                             .OrderByDescending(al => al.DatePublished).ToListAsync();
+            Alert = await PaginatedList<Alert>.CreateAsync(alertList.AsNoTracking(), pageIndex ?? 1,pageSize);
+    */        
+    //Alert = await _context.Alerts.OrderByDescending(s => s.DatePublished).ToListAsync(); // TODO: Must join against your own selected keywords so that it only returns the ones you have yourself.
             
 
         }
+        
     }
 }
