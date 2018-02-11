@@ -2,6 +2,10 @@
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
+    if (User.Identity.IsAuthenticated)
+    {
+        Response.Redirect("/Alerts");
+    }
 }
 
 <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
@@ -63,7 +67,7 @@
             Alertinator is a quick way to view and receive news on topics you're interested in without having to manually look through news sites or search engines. It presents the news related to your topics without ads cluttering your view. News are constantly sourced automatically via the web and fed into this web application.
         </p>
 
-        
+
     </div>
     <div class="col-md-4">
         <h2>Benefits</h2>
@@ -84,5 +88,5 @@
 
         </ul>
     </div>
-    
+
 </div>
